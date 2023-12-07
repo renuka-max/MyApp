@@ -1,0 +1,28 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.navbar{
+    height: 70px;
+    /* margin-bottom: 100px; */
+}
+a{
+    color: white !important;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%; 
+    background-color: black;
+    text-align: center;
+    padding: 20px; 
+  }
+  p{
+    color: white;
+  }
+  
+  .main{
+    margin-top: 130px !important;
+    margin-bottom: 130px !important;
+  }

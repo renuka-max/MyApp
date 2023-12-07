@@ -1,0 +1,44 @@
+
+<!-- Case conversion -->
+<!-- <p>{{mainWord | case}}</p>
+<button (click)="updateMainWord()">Update Main Word</button> -->
+
+<!-- <p>{{date | date:'short'}}</p> -->
+<!-- <p>{{price|currency:'INR'}}</p> -->
+
+
+<!-- Changing currency using dropdown -->
+<!-- <div>
+    <h2>Price Details</h2>
+    <label for="currency">Selected currency: </label>
+    <select name="currency" id="currency" [(ngModel)]="selectedCurrency" >
+        <option value="INR" [defaultSelected]>INR</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="AUD">AUD</option>
+        <option value="JPY">JPY</option>
+    </select>
+    <p>price: {{price|currency:selectedCurrency}}</p>
+</div> -->
+
+<!-- Global search filter -->
+<h1>Product table</h1>
+<input type="text" placeholder="Search..." [(ngModel)]="searchText"/>
+<table class="product-list">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data | case:searchText ">
+            <td>{{item.id}}</td>
+            <td>{{item.product}}</td>
+            <td>{{item.price}}</td>
+            
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,14 @@
+{
+  "body": [],
+  "Employees": [
+    {
+      "fname": "Renuka",
+      "lname": "Patangay",
+      "email": "renukapatangay1@gmail.com",
+      "address": "1395/p,sai nagar colony, badangpet.",
+      "designation": "Nadwkda",
+      "gender": "female",
+      "id": 1
+    }
+  ]
+}

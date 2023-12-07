@@ -1,0 +1,13 @@
+#container .box {
+    /* float: left; */
+    /* padding-bottom: 15px;
+    color: red; */
+  } 
+  /* h2 + p {
+	color: blue;
+} */
+input[type="text"] {
+	border:4px solid green;
+	width: 200px;
+    color: green;
+}

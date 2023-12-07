@@ -1,0 +1,14 @@
+table{
+    border: 4px groove gray;
+    border-collapse: collapse;
+    margin-top: 40px;
+    width: 500px;
+}
+
+td,th{
+    border: 2px solid gray;
+    padding: 10px 40px;
+}
+td,th{
+    text-align: center;
+}

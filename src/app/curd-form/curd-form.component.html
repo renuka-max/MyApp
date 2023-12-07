@@ -1,0 +1,102 @@
+<button class="mb-5 btn" (click)="getEmp()" (click)="form=false;table=true;getBtn=false;addBtn=true" *ngIf="getBtn">Get
+    Employes</button>
+<button class="mb-5 btn" (click)="form=true;table=false;addBtn=false;getBtn=true" *ngIf="addBtn">Add Employes</button>
+
+<table *ngIf="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Designation</th>
+            <th>Gender</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of empData;let index=index">
+            <td>{{item.fname}}</td>
+            <td>{{item.lname}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.designation}}</td>
+            <td>{{item.gender}}</td>
+            <td ><button (click)="editEmp(index);editMode=true;getBtn=true;addBtn=false;form=true;table=false">Edit</button>
+                <button (click)="deleteEmp(index)" class="mt-1">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<form action="" (ngSubmit)="postData(myForm);" #myForm="ngForm" *ngIf="form">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required pattern="^[a-zA-Z]+$" minlength="3" maxlength="50"
+        [(ngModel)]="post.fname" ngModel #fname="ngModel">
+    <div *ngIf="myForm.submitted&& !post.fname;" class="mb-3 alert alert-danger">* First Name is required</div>
+    <div *ngIf="fname.touched && fname.invalid  " class="mb-3 alert alert-danger">
+        <div *ngIf="fname.errors?.['required']">* First Nmae is required</div>
+        <div *ngIf="fname.errors?.['pattern']">* First should only consist of alpha chars</div>
+        <div *ngIf="fname.errors?.['minlength']">*First should have min 3 lettes</div>
+        <div *ngIf="fname.errors?.['maxlength']">* First should not exceed more than 50 letters</div>
+    </div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required pattern="^[a-zA-Z]+$" minlength="3" #lname="ngModel"
+        maxlength="50" ngModel [(ngModel)]="post.lname">
+    <div *ngIf="myForm.submitted&& !post.lname;" class="mb-3 alert alert-danger">* Last Name is required</div>
+    <div *ngIf="lname.touched && lname.invalid  " class="mb-3 alert alert-danger">
+        <div *ngIf="lname.errors?.['required']">* Last Nmae is required</div>
+        <div *ngIf="lname.errors?.['pattern']">* Last should only consist of alpha</div>
+        <div *ngIf="lname.errors?.['minlength']">* last should have min 3 letters</div>
+        <div *ngIf="lname.errors?.['maxlength']">* last should not exceed more than 50 letters</div>
+    </div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required [(ngModel)]="post.email" ngModel #email="ngModel"
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+    <div *ngIf="myForm.submitted&& !post.email;" class="mb-3 alert alert-danger">* Email is required</div>
+    <div *ngIf="email.touched && email.invalid" class="mb-3 alert alert-danger">
+        <div *ngIf="email.errors?.['required']">* Email id required</div>
+        <div *ngIf="email.errors?.['pattern']">* Email should be like example@xyz.com</div>
+    </div>
+
+    <label for="address">Address:</label>
+    <textarea rows="4" type="text" id="address" name="address" required [(ngModel)]="post.address" ngModel
+        #address="ngModel" required minlength="20" maxlength="100"></textarea>
+    <div *ngIf="myForm.submitted&& !post.address;" class="mb-3 alert alert-danger">* Address is required</div>
+    <div *ngIf="address.touched && address.invalid" class="mb-3 alert alert-danger">
+        <div *ngIf="address.errors?.['required']">* Address is required</div>
+        <div *ngIf="address.errors?.['minlength']">* Address should have min 20 chars</div>
+        <div *ngIf="address.errors?.['maxlength']">* Address should not exceed more than 100 chars</div>
+    </div>
+
+    <label for="designation">Designation:</label>
+    <input type="text" id="designation" name="designation" required [(ngModel)]="post.designation" ngModel
+        #designation="ngModel" required>
+    <div *ngIf="myForm.submitted&& !post.designation;" class="mb-3 alert alert-danger">* Designation is required</div>
+    <div *ngIf="designation.touched && designation.invalid" class="mb-3 alert alert-danger">
+        <div *ngIf="designation.errors?.['required']">* Designation id required</div>
+    </div>
+
+
+    <div class="label-container">
+        <label for="gender">Gender:</label>
+        <label for="male">
+            <input type="radio" id="male" name="gender" value="male" [(ngModel)]="post.gender"> Male
+        </label>
+        <label for="female">
+            <input type="radio" id="female" name="gender" value="female" [(ngModel)]="post.gender"> Female
+        </label>
+        <label for="others">
+            <input type="radio" id="others" name="gender" value="others" [(ngModel)]="post.gender"> Others
+        </label>
+    </div>
+    <div class="d-block mb-4">
+        <div *ngIf="myForm.submitted&& !post.gender;" class="mb-3 alert alert-danger">* Gender is required</div>
+    </div>
+
+
+
+    <button type="submit" (click)="formSubmitted=true">{{ editMode ? 'Update' : 'Submit' }}</button>
+
+</form>
